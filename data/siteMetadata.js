@@ -1,19 +1,19 @@
 const siteMetadata = {
-  title: 'Next.js Starter Blog',
-  author: 'Tails Azimuth',
-  headerTitle: 'TailwindBlog',
-  description: 'A blog created with Next.js and Tailwind.css',
+  title: "Tat Tran's Blog",
+  author: 'Tat Tran',
+  headerTitle: 'Tất Trần',
+  description: 'A place where I can share something with everyone.',
   language: 'en-us',
-  siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
-  siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
+  siteUrl: 'https://tattran-blog.vercel.app/',
+  siteRepo: 'https://github.com/TatTran22/tailwind-nextjs-blog.git',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/twitter-card.png',
-  email: 'address@yoursite.com',
-  github: 'https://github.com',
-  twitter: 'https://twitter.com/Twitter',
-  facebook: 'https://facebook.com',
-  youtube: 'https://youtube.com',
+  email: 'tattran22@outlook.com',
+  github: 'https://github.com/TatTran22/',
+  twitter: 'https://twitter.com/TatTran22/',
+  facebook: 'https://facebook.com/TatTran22/',
+  youtube: 'https://www.youtube.com/channel/UC7f-84TMKO2Do7l4K56l88A',
   linkedin: 'https://www.linkedin.com',
   locale: 'en-US',
   analytics: {
@@ -51,13 +51,13 @@ const siteMetadata = {
       // Visit the link below, and follow the steps in the 'configuration' section
       // https://utteranc.es/
       repo: process.env.NEXT_PUBLIC_UTTERANCES_REPO,
-      issueTerm: '', // supported options: pathname, url, title
+      issueTerm: 'pathname', // supported options: pathname, url, title
       label: '', // label (optional): Comment 💬
       // theme example: github-light, github-dark, preferred-color-scheme
       // github-dark-orange, icy-dark, dark-blue, photon-dark, boxy-light
-      theme: '',
+      theme: 'light',
       // theme when dark mode
-      darkTheme: '',
+      darkTheme: 'transparent_dark',
     },
     disqus: {
       // https://help.disqus.com/en/articles/1717111-what-s-a-shortname
