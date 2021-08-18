@@ -5,7 +5,7 @@ const siteMetadata = {
   description: 'A place where I can share something with everyone.',
   language: 'en-us',
   siteUrl: 'https://tattran-blog.vercel.app/',
-  siteRepo: 'https://github.com/TatTran22/tailwind-nextjs-blog.git',
+  siteRepo: 'https://github.com/TatTran22/tailwind-nextjs-blog',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
   socialBanner: '/static/images/twitter-card.png',
@@ -20,7 +20,7 @@ const siteMetadata = {
     // supports plausible, simpleAnalytics or googleAnalytics
     plausibleDataDomain: 'https://www.blinkk.cc/', // e.g. tailwind-nextjs-starter-blog.vercel.app
     simpleAnalytics: true, // true or false
-    googleAnalyticsId: 'G-DLQJMQWXWN', // e.g. UA-000000-2 or G-XXXXXXX
+    googleAnalyticsId: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID, // e.g. UA-000000-2 or G-XXXXXXX
   },
   comment: {
     // Select a provider and use the environment variables associated to it
