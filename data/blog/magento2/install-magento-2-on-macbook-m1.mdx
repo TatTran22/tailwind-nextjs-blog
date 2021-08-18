@@ -1,0 +1,267 @@
+---
+title: 'Install Magento 2 on Macbook M1'
+date: '2021-07-25'
+tags: ['magento', 'nginx', 'magento2', 'php', 'mysql']
+draft: false
+summary: 'Instructions for installing Magento 2 development environment (PHP, MYSQL, Nginx, etc.).'
+layout: PostSimple
+---
+
+## Overview
+
+- [Homebrew](#install-homebrew)
+- [Git](#install-git)
+- [MYSQL](#install-mysql)
+- [PHP](#install-php)
+- [Nginx](#install-nginx)
+- [Composer](#install-composer)
+- [Docker](#install-docker)
+- [Elasticsearch](#install-elasticsearch)
+
+## Install Homebrew
+
+The Package Manager for macOS.
+
+### macOS Requirements
+
+- A 64-bit Intel CPU or Apple Silicon CPU
+- macOS Mojave (10.14) (or higher)
+- Command Line Tools (CLT) for Xcode: `xcode-select --install`, [developer.apple.com/downloads](https://developer.apple.com/downloads) or [Xcode](https://itunes.apple.com/us/app/xcode/id497799835)
+- A Bourne-compatible shell for installation (e.g. bash or zsh)
+
+```bash:Terminal
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Homebrew installs packages to their own directory and then symlinks their files into `/usr/local` for macOS Intel, `/opt/homebrew` for Apple Silicon.
+
+## Install Git
+
+Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
+
+```bash:Terminal
+brew install git
+```
+
+That will install latest version of git.
+
+## Install MYSQL
+
+```bash:Terminal
+brew install mysql
+```
+
+You can now start the MySQL server by running:
+
+```bash:Terminal
+brew services start mysql
+```
+
+Now we need to secure the MySQL server. By default the server comes without a root password, so we need to make sure it’s protected.
+
+Run:
+
+```bash:Terminal
+mysql_secure_installation
+```
+
+The procedure can take a while, but it gives a lot of power to make sure you get the best defaults out of the box:
+
+![mysql_secure_installation](/static/images/install_magento/install-mysql.png)
+
+Since we used `brew services start mysql` to start MySQL, your Mac will re-start it at reboot. You can run:
+
+```bash:Terminal
+brew services stop mysql
+```
+
+to stop this from happening, and also to immediately stop MySQL.
+
+You can also avoid this daemon mode (that’s what we call programs that always run in the background and restart when the computer is restarted) by running:
+
+```bash:Terminal
+mysql.server start
+```
+
+This will start MySQL and will keep it running until the computer is shut down, or until you run:
+
+```bash:Terminal
+mysql.server stop
+```
+
+and it will not re-start it at reboot.
+
+It’s up to you to decide which one you prefer.
+
+Now you can connect to the server using the command:
+
+```bash:Terminal
+mysql -u root -p
+```
+
+You will need to type the **root** user password after you run this command, and once you are done you should see this screen:
+
+![mysql](/static/images/install_magento/install-mysql2.png)
+
+### Configuring the Magento database instance
+
+This section discusses how to create a new database instance for Magento. Although a new database instance is recommended, you can optionally install Magento into an existing database instance.
+
+To configure a MySQL database instance:
+
+Log in to your database server as any user.
+Get to a MySQL command prompt:
+
+```bash:Terminal
+mysql -u root -p
+```
+
+Enter the MySQL root user’s password when prompted.
+Enter the following commands in the order shown to create a database instance named **mage2ce** with username **magento**:
+
+```sql:Query
+create database mage2ce;
+```
+
+```sql:Query(Optional)
+create user 'magento'@'localhost' IDENTIFIED BY 'magento';
+```
+
+```sql:Query(Optional)
+GRANT ALL ON mage2ce.* TO 'magento'@'localhost';
+```
+
+```sql:Query
+flush privileges;
+```
+
+Enter `exit` to quit the command prompt.
+
+## Install PHP
+
+```bash:Terminal
+brew install php@7.4
+```
+
+### Verify PHP is installed
+
+Most flavors of Linux have PHP installed by default. This topic assumes that you have already installed PHP. To verify if PHP is installed already, in the command line, type:
+
+```bash:Terminal
+php -v
+```
+
+If PHP is installed, a message similar to the following displays:
+
+```bash:Terminal
+PHP 7.4.21 (cli) (built: Jul 12 2021 03:04:54) ( NTS )
+Copyright (c) The PHP Group
+Zend Engine v3.4.0, Copyright (c) Zend Technologies
+    with Zend OPcache v7.4.21, Copyright (c), by Zend Technologies
+```
+
+Magento 2.4 is compatible with PHP 7.3, but we test with, and recommend using, PHP 7.4.
+
+### Check PHP settings
+
+#### Step 1: Find PHP configuration files
+
+This section discusses how you find the configuration files necessary to update required settings.
+
+- Find `php.ini` configuration file
+
+To locate the PHP command-line configuration, enter
+
+```bash:Terminal
+php --ini | grep "Loaded Configuration File"
+```
+
+- Find OPcache configuration settings
+  PHP OPcache settings are typically located either in php.ini or opcache.ini. The location might depend on your operating system and PHP version. The OPcache configuration file might have an opcache section or settings like opcache.enable.
+
+Use the following guidelines to find it:
+
+- Nginx web server:
+
+OPcache settings are typically located in `/opt/homebrew/etc/php/7.4/conf.d/ext-opcache.ini`
+
+If not, use the following command to locate it:
+
+```bash:Terminal
+sudo find / -name 'opcache.ini'
+```
+
+PHP-FPM: `/opt/homebrew/etc/php/7.4/php.ini`
+
+If you have more than one `opcache.ini`, modify all of them.
+
+## Install Nginx
+
+```bash:Terminal
+brew install nginx
+```
+
+## Install Composer
+
+```bash:Terminal
+brew install composer
+```
+
+## Install Docker
+
+[Get Docker Desktop for Mac](https://hub.docker.com/editions/community/docker-ce-desktop-mac)
+
+### System requirements
+
+Your Mac must meet the following requirements to successfully install Docker Desktop.
+
+### Mac with Apple silicon
+
+You must install Rosetta 2 as some binaries are still Darwin/AMD64. To install Rosetta 2 manually from the command line, run the following command:
+
+```bash:Terminal
+softwareupdate --install-rosetta
+```
+
+For more information, see [Docker Desktop for Apple silicon](https://docs.docker.com/docker-for-mac/apple-silicon/).
+
+### Install and run Docker Desktop on Mac
+
+1. Double-click `Docker.dmg` to open the installer, then drag the Docker icon to the Applications folder.
+
+![Install Docker app](/static/images/install_magento/docker-app-drag.png)
+
+2. Double-click `Docker.app` in the Applications folder to start Docker. (In the example below, the Applications folder is in “grid” view mode.)
+
+![Docker app in Hockeyapp](/static/images/install_magento/docker-app-in-apps.png)
+
+The Docker menu in the top status bar indicates that Docker Desktop is running, and accessible from a terminal.
+
+![Whale in menu bar](/static/images/install_magento/whale-in-menu-bar.png)
+
+If you’ve just installed the app, Docker Desktop launches the onboarding tutorial. The tutorial includes a simple exercise to build an example Docker image, run it as a container, push and save the image to Docker Hub.
+
+![Docker Quick Start tutorial](/static/images/install_magento/docker-tutorial-mac.png)
+
+3. Click the Docker menu [whale menu](https://docs.docker.com/docker-for-mac/images/whale-x.png) to see Preferences and other options.
+
+4. Select **About Docker** to verify that you have the latest version.
+
+## Install Elasticsearch
+
+### Pulling the image
+
+Obtaining Elasticsearch for Docker is as simple as issuing a docker pull command against the Elastic Docker registry. We will install Elasticsearch version 7.9.3 because this is the highest version that Magento supports.
+
+```bash:Terminal
+docker pull docker.elastic.co/elasticsearch/elasticsearch:7.9.3-arm64
+```
+
+Starting a single node cluster with Dockeredit
+To start a single-node Elasticsearch cluster for development or testing, specify single-node discovery to bypass the bootstrap checks:
+
+```bash:Terminal
+docker run -dp 9200:9200 -dp 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.9.3-arm64
+```
+
+The image exposes TCP ports 9200 and 9300
