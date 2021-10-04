@@ -194,6 +194,52 @@ PHP-FPM: `/opt/homebrew/etc/php/7.4/php.ini`
 
 If you have more than one `opcache.ini`, modify all of them.
 
+#### Step 2: How to set PHP options
+
+To set PHP options:
+
+1. Open a php.ini in a text editor.
+2. Locate your server’s time zone in the available [time zone settings](https://www.php.net/manual/en/timezones.php)
+3. Locate the following setting and uncomment it if necessary:
+
+```text:php.ini
+date.timezone =
+```
+
+4. Add the time zone setting you found in step 2.
+5. Change the value of memory_limit to one of the values recommended at the beginning of this section.
+   For example,
+
+```text:php.ini
+memory_limit=2G
+```
+
+6. Add or update the realpath_cache configuration to match the following values:
+
+```text:php.ini
+;
+; Increase realpath cache size
+;
+realpath_cache_size = 10M
+
+;
+; Increase realpath cache ttl
+;
+realpath_cache_ttl = 7200
+```
+
+7. Save your changes and exit the text editor.
+8. Open the other php.ini (if they are different) and make the same changes in it.
+
+#### Step 3: Set OPcache options
+
+To set opcache.ini options:
+
+1. Open your OPcache configuration file in a text editor:
+2. Locate `opcache.save_comments` and uncomment it if necessary.
+3. Make sure its value is set to 1.
+4. Save your changes and exit the text editor.
+
 ## Install Nginx
 
 ```bash:Terminal
@@ -204,24 +250,6 @@ Start Nginx service by running:
 
 ```bash:Terminal
 brew services start nginx
-```
-
-Create configuration file for Nginx with path `/opt/homebrew/etc/nginx/servers/mage2ce.local.config`
-
-```config:/opt/homebrew/etc/nginx/servers/mage2ce.local.config
-upstream fastcgi_backend {
-  server   127.0.0.1:9074;
-}
-
-server {
-    listen 80;
-    server_name mage2ce.local;
-    set $MAGE_ROOT /opt/homebrew/var/www/mage2ce;
-    set $MAGE_MODE developer;
-
-    error_log /opt/homebrew/var/www/mage2ce/var/log/mage2ce.local-error.log;
-    include /opt/homebrew/var/www/mage2ce/nginx.conf.sample;
-}
 ```
 
 ## Install Composer
@@ -333,6 +361,24 @@ For security, remove write permissions from these directories: '/opt/homebrew/va
 [Progress: 274 / 274]
 [SUCCESS]: Magento installation complete.
 [SUCCESS]: Admin Panel URI: /admin
+```
+
+Create configuration file for Nginx with path `/opt/homebrew/etc/nginx/servers/mage2ce.local.config`
+
+```config:/opt/homebrew/etc/nginx/servers/mage2ce.local.config
+upstream fastcgi_backend {
+  server   127.0.0.1:9074;
+}
+
+server {
+    listen 80;
+    server_name mage2ce.local;
+    set $MAGE_ROOT /opt/homebrew/var/www/mage2ce;
+    set $MAGE_MODE developer;
+
+    error_log /opt/homebrew/var/www/mage2ce/var/log/mage2ce.local-error.log;
+    include /opt/homebrew/var/www/mage2ce/nginx.conf.sample;
+}
 ```
 
 Check syntax of the configuration file of Nginx by running:
