@@ -63,7 +63,10 @@ export default function ListLayout({ posts, title, initialDisplayPosts = [], pag
                   <div className="space-y-3 xl:col-span-3">
                     <div>
                       <h3 className="text-2xl font-bold leading-8">
-                        <Link href={`/blog/${slug}`} className="text-gray-900 dark:text-gray-100">
+                        <Link
+                          href={`/blog/${slug}`}
+                          className="text-gray-900 background-author-animate dark:text-gray-100 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r bg-gradient-to-r hover:from-rose-400 hover:via-fuchsia-500 hover:to-indigo-500 dark:hover:text-transparent"
+                        >
                           {title}
                         </Link>
                       </h3>

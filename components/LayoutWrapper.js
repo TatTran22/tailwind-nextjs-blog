@@ -11,7 +11,7 @@ const LayoutWrapper = ({ children }) => {
   return (
     <SectionContainer>
       <div className="flex flex-col justify-between h-screen">
-        <header className="flex items-center justify-between py-10">
+        <header className="flex items-center justify-between py-5">
           <div>
             <Link href="/" aria-label="Tat Tran's Blog">
               <div className="flex items-center justify-between">
@@ -28,12 +28,12 @@ const LayoutWrapper = ({ children }) => {
             </Link>
           </div>
           <div className="flex items-center text-base leading-5">
-            <div className="hidden tracking-wider uppercase sm:block">
+            <div className="hidden sm:block">
               {headerNavLinks.map((link) => (
                 <Link
                   key={link.title}
                   href={link.href}
-                  className="p-1 font-medium text-gray-900 sm:p-4 dark:text-gray-100"
+                  className="p-1 text-xl font-bold tracking-wider text-gray-900 uppercase hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-pink-500 hover:via-red-500 hover:to-yellow-500 sm:p-4 dark:text-gray-100 dark:hover:text-transparent background-author-animate"
                 >
                   {link.title}
                 </Link>

@@ -17,11 +17,12 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['Radiance', ...defaultTheme.fontFamily.sans],
-        serif: ['Reaver', ...defaultTheme.fontFamily.serif],
+        sans: ['Reaver', ...defaultTheme.fontFamily.sans],
+        serif: ['Radiance', ...defaultTheme.fontFamily.serif],
+        mono: ['Fira Code', ...defaultTheme.fontFamily.mono],
       },
       colors: {
-        primary: colors.red,
+        primary: colors.fuchsia,
         gray: colors.trueGray,
         rose: {
           50: '#fff1f2',
@@ -175,6 +176,9 @@ module.exports = {
   },
   variants: {
     typography: ['dark'],
+    extend: {
+      animation: ['motion-safe', 'motion-reduce'],
+    },
   },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 }
