@@ -9,7 +9,7 @@ export default function Projects() {
       <PageSEO title={`Projects - ${siteMetadata.author}`} description={siteMetadata.description} />
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="pt-6 pb-8 space-y-2 md:space-y-5">
-          <h1 className="p-2 text-3xl font-extrabold leading-9 tracking-tight text-transparent sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 background-author-animate">
+          <h1 className="p-2 text-3xl font-extrabold leading-9 text-transparent sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 background-author-animate">
             Projects
           </h1>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">

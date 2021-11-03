@@ -2,6 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @font-face {
+    font-family: Radiance;
+    font-weight: 400;
+    src: url(./fonts/radiance/radiance.woff) format('woff');
+  }
+  @font-face {
+    font-family: Radiance;
+    font-weight: 500;
+    src: url(./fonts/radiance/radiance-semibold.woff) format('woff');
+  }
+  @font-face {
+    font-family: Radiance;
+    font-weight: 600;
+    src: url(./fonts/radiance/radiance-bold.woff) format('woff');
+  }
+
+  @font-face {
+    font-family: Reaver;
+    font-weight: 400;
+    src: url(./fonts/reaver/Reaver-Regular.woff) format('woff');
+  }
+  @font-face {
+    font-family: Reaver;
+    font-weight: 500;
+    src: url(./fonts/reaver/Reaver-SemiBold.woff) format('woff');
+  }
+  @font-face {
+    font-family: Reaver;
+    font-weight: 600;
+    src: url(./fonts/reaver/Reaver-Bold.woff) format('woff');
+  }
+
+  h1 {
+    @apply font-serif tracking-wider;
+  }
+  h2 {
+    @apply font-serif tracking-wide;
+  }
+  body {
+    @apply font-sans;
+  }
+}
+
+@layer components {
+  .prose h2 {
+    @apply tracking-normal;
+  }
+}
+
 .task-list-item:before {
   @apply hidden;
 }

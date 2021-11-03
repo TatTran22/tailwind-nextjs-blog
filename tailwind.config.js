@@ -17,7 +17,8 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        sans: ['Radiance', ...defaultTheme.fontFamily.sans],
+        serif: ['Reaver', ...defaultTheme.fontFamily.serif],
       },
       colors: {
         primary: colors.red,
