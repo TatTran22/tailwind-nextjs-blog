@@ -2,8 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  mode: 'jit',
-  purge: ['./pages/**/*.js', './components/**/*.js', './layouts/**/*.js', './lib/**/*.js'],
+  content: ['./pages/**/*.js', './components/**/*.js', './layouts/**/*.js', './lib/**/*.js'],
   darkMode: 'class',
   theme: {
     extend: {
@@ -22,32 +21,8 @@ module.exports = {
         mono: ['Fira Code', ...defaultTheme.fontFamily.mono],
       },
       colors: {
-        primary: colors.fuchsia,
-        gray: colors.trueGray,
-        rose: {
-          50: '#fff1f2',
-          100: '#ffe4e6',
-          200: '#fecdd3',
-          300: '#fda4af',
-          400: '#fb7185',
-          500: '#f43f5e',
-          600: '#e11d48',
-          700: '#be123c',
-          800: '#9f1239',
-          900: '#881337',
-        },
-        fuchsia: {
-          50: '#fdf4ff',
-          100: '#fae8ff',
-          200: '#f5d0fe',
-          300: '#f0abfc',
-          400: '#e879f9',
-          500: '#d946ef',
-          600: '#c026d3',
-          700: '#a21caf',
-          800: '#86198f',
-          900: '#701a75',
-        },
+        primary: colors.teal,
+        gray: colors.neutral,
       },
       typography: (theme) => ({
         DEFAULT: {
@@ -76,6 +51,9 @@ module.exports = {
             },
             'h4,h5,h6': {
               color: theme('colors.gray.900'),
+            },
+            pre: {
+              backgroundColor: theme('colors.gray.800'),
             },
             code: {
               color: theme('colors.pink.500'),
@@ -142,6 +120,9 @@ module.exports = {
             'h4,h5,h6': {
               color: theme('colors.gray.100'),
             },
+            pre: {
+              backgroundColor: theme('colors.gray.800'),
+            },
             code: {
               backgroundColor: theme('colors.gray.800'),
             },
@@ -172,12 +153,6 @@ module.exports = {
           },
         },
       }),
-    },
-  },
-  variants: {
-    typography: ['dark'],
-    extend: {
-      animation: ['motion-safe', 'motion-reduce'],
     },
   },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
