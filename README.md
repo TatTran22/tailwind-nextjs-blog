@@ -30,6 +30,7 @@ Feature request? Check the past discussions to see if it has been brought up pre
 - [fiqrychoerudin.dev](https://www.fiqrychoerudin.dev/) - simple portfolio.
 - [irvin.dev](https://www.irvin.dev/) - Irvin Lin's personal site. Added YouTube embedding.
 
+
 Using the template? Feel free to create a PR and add your blog to this list.
 
 ## Motivation
@@ -87,11 +88,13 @@ npx degit timlrx/tailwind-nextjs-starter-blog#typescript
 ```
 
 2. Personalize `siteMetadata.js` (site related information)
-3. Personalize `authors/default.md` (main author)
-4. Modify `projectsData.js`
-5. Modify `headerNavLinks.js` to customize navigation links
-6. Add blog posts
-7. Deploy on Vercel
+3. Modify the content security policy in `next.config.js` if you want to use
+   any analytics provider or a commenting solution other than giscus.
+4. Personalize `authors/default.md` (main author)
+5. Modify `projectsData.js`
+6. Modify `headerNavLinks.js` to customize navigation links
+7. Add blog posts
+8. Deploy on Vercel
 
 ## Installation
 
@@ -107,7 +110,7 @@ First, run the development server:
 npm start
 ```
 
-    or
+or
 
 ```bash
 npm run dev
@@ -165,6 +168,7 @@ summary (optional)
 images (optional, if none provided defaults to socialBanner in siteMetadata config)
 authors (optional list which should correspond to the file names in `data/authors`. Uses `default` if none is specified)
 layout (optional list which should correspond to the file names in `data/layouts`)
+canonicalUrl (optional, canonical url for the post for SEO)
 ```
 
 Here's an example of a post's frontmatter:
@@ -180,6 +184,7 @@ summary: 'Looking for a performant, out of the box template, with all the best i
 images: ['/static/images/canada/mountains.jpg', '/static/images/canada/toronto.jpg']
 authors: ['default', 'sparrowhawk']
 layout: PostLayout
+canonicalUrl: https://tailwind-nextjs-starter-blog.vercel.app/blog/introducing-tailwind-nextjs-starter-blog
 ---
 ```
 
