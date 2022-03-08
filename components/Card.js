@@ -34,7 +34,7 @@ const Card = ({ title, description, imgSrc, href }) => (
             <Link
               href={href}
               aria-label={`Link to ${title}`}
-              className="hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-rose-400 hover:via-fuchsia-500 hover:to-indigo-500 background-author-animate"
+              className="background-author-animate hover:bg-gradient-to-r hover:from-rose-400 hover:via-fuchsia-500 hover:to-indigo-500 hover:bg-clip-text hover:text-transparent"
             >
               {title}
             </Link>

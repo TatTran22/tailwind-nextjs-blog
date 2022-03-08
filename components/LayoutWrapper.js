@@ -34,7 +34,7 @@ const LayoutWrapper = ({ children }) => {
                 <Link
                   key={link.title}
                   href={link.href}
-                  className="p-1 text-xl font-bold tracking-wider text-gray-900 uppercase hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-pink-500 hover:via-red-500 hover:to-yellow-500 sm:p-4 dark:text-gray-100 dark:hover:text-transparent background-author-animate"
+                  className="background-author-animate p-1 text-xl font-bold uppercase tracking-wider text-gray-900 hover:bg-gradient-to-r hover:from-pink-500 hover:via-red-500 hover:to-yellow-500 hover:bg-clip-text hover:text-transparent dark:text-gray-100 dark:hover:text-transparent sm:p-4"
                 >
                   {link.title}
                 </Link>

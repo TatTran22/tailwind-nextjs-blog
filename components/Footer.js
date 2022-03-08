@@ -12,7 +12,7 @@ export default function Footer() {
           <SocialIcon kind="facebook" href={siteMetadata.facebook} size="6" />
           <SocialIcon kind="youtube" href={siteMetadata.youtube} size="6" />
         </div>
-        <div className="flex mb-2 space-x-2 text-base font-semibold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 background-author-animate">
+        <div className="background-author-animate mb-2 flex space-x-2 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-base font-semibold text-transparent">
           <div>{siteMetadata.author}</div>
           <div>{` • `}</div>
           <div>{`© ${new Date().getFullYear()}`}</div>

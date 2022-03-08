@@ -64,10 +64,10 @@ const Pre = (props) => {
           </button>
           {copied ? (
             <>
-              <span className="text-base absolute z-10 top-2.5 right-12 bg-green-400 rounded-md px-1.5 py-0.5 copy-text text-gray-800">
+              <span className="copy-text absolute top-2.5 right-12 z-10 rounded-md bg-green-400 px-1.5 py-0.5 text-base text-gray-800">
                 Copied
               </span>
-              <span className="absolute w-2 h-2 transform rotate-45 bg-green-400 top-5 right-11"></span>
+              <span className="absolute top-5 right-11 h-2 w-2 rotate-45 transform bg-green-400"></span>
             </>
           ) : null}
         </>
