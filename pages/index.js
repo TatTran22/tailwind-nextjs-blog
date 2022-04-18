@@ -33,9 +33,6 @@ export default function Home({ posts }) {
               <span className="background-author-animate bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent">
                 {siteMetadata.author}
               </span>
-              <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-                Latest
-              </h1>
               <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
                 {siteMetadata.description}
               </p>
