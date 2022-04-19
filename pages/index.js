@@ -33,7 +33,7 @@ export default function Home({ posts }) {
               <span className="background-author-animate bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-transparent">
                 {siteMetadata.author}
               </span>
-              <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
+              <p className="mt-2 font-serif text-lg leading-7 tracking-wide text-gray-500 dark:text-gray-400">
                 {siteMetadata.description}
               </p>
             </h1>

@@ -9,4 +9,4 @@ facebook: https://facebook.com/tattran22
 github: https://github.com/tattran22
 ---
 
-Tat Tran is a Magento web developer working for Wise Commerce in Hanoi.
+I’m a software engineer specializing in building (and occasionally designing) exceptional digital experiences. I’m passionate about building products that solve real problems. I’m a problem solver who enjoys bringing ideas to life in code. I’m a lifelong learner, and I’m always looking to challenge myself and learn new skills.
