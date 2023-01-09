@@ -1,0 +1,9 @@
+{
+  "editor.formatOnSave": false,
+  "prettier.enable": false,
+  "eslint.alwaysShowStatus": true,
+  "eslint.validate": ["vue", "javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
