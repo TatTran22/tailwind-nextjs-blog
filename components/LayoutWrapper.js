@@ -20,9 +20,9 @@ const LayoutWrapper = ({ children }) => {
                   <Image
                     src="/static/images/avatar.png"
                     alt="avatar"
-                    width="72px"
-                    height="72px"
-                    className="h-48 w-48 rounded-full"
+                    width={72}
+                    height={72}
+                    className="rounded-full"
                   />
                 </div>
                 {typeof siteMetadata.headerTitle === 'string' ? (

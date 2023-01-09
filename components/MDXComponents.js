@@ -6,6 +6,14 @@ import CustomLink from './Link'
 import TOCInline from './TOCInline'
 import Pre from './Pre'
 import { BlogNewsletterForm } from './NewsletterForm'
+import { ListLayout, AuthorLayout, PostLayout, PostSimple } from '../layouts'
+
+const layoutComponents = {
+  ListLayout,
+  AuthorLayout,
+  PostLayout,
+  PostSimple,
+}
 
 export const MDXComponents = {
   Image,
@@ -14,7 +22,7 @@ export const MDXComponents = {
   pre: Pre,
   BlogNewsletterForm: BlogNewsletterForm,
   wrapper: ({ components, layout, ...rest }) => {
-    const Layout = require(`../layouts/${layout}`).default
+    const Layout = layoutComponents[layout]
     return <Layout {...rest} />
   },
 }
